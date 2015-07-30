@@ -1,17 +1,10 @@
-var http = require('http');
+var express = require('express');
 
-var server = http.createServer(function(req, res) {
-  res.writeHead(200);
-  res.end('<html ng-app>
-<head>
-  <title>Hello World in AngularJS</title>
-</head>
-<body>
+var app = express();
 
-<input ng-model="name"> Hello {{ name }}
-
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-</body>
-</html>');
+app.get('/etage/:etagenum/chambre', function(req, res) {
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Vous êtes à la chambre de l\'étage n°' + req.params.etagenum);
 });
-server.listen(8080);
+
+app.listen(8080);
