@@ -31,6 +31,11 @@ var server = app.listen(8080, function () {
   var host = server.address().address;
   var port = server.address().port;
   serverLogStream.write('log Example app listening at http://%s:%s' + host + port);
+  
+  server.on('error', function (reason){
+	serveurLogStream.write('erreur dans le programme: '+reason);
+  });
+ 
   //server.on('error',serverLogStream.write('erreur'));
   console.log('Example app listening at http://%s:%s', host, port);
   
